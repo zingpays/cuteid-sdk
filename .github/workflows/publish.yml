@@ -3,7 +3,7 @@ name: Publish Package
 on:
   push:
     branches:
-      - main  # 或者你所使用的发布分支
+      - master  # 或者你所使用的发布分支
     # 如果希望只针对打 tag 时发布，可以用下面的触发条件：
     # tags:
     #   - 'v*.*.*'
