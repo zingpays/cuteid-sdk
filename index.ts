@@ -10,16 +10,13 @@ export const init = async (
   callbackUrl: string,
   env: 'STAG' | 'PROD' = 'PROD'
 ): Promise<void> => {
+  let webBaseUrl: string;
+  let apiBaseUrl: string;
   return new Promise((resolve, reject) => {
     // 参数校验
     if (!appUuid || !callbackUrl) {
       reject(new Error('参数错误：appUuid 和 callbackUrl 均为必传参数'));
     }
-
-    // 根据环境设置对应的前端页面地址
-    let apiBaseUrl: string;
-    let webBaseUrl: string;
-
     if (env === 'STAG') {
       webBaseUrl = 'https://sandbox-web.cuteid.ai';
       apiBaseUrl = 'https://sandbox-api.cuteid.ai';
