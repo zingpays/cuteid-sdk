@@ -1,8 +1,10 @@
 {
   "name": "@zingpays/cuteid-sdk",
-  "version": "1.0.3",
-  "main": "index.js",
+  "version": "0.0.1",
+  "main": "index.ts",
   "publishConfig": {
+    "registry": "https://npm.pkg.github.com",
     "access": "public"
-  }
+  },
+  "dependencies": {}
 }
