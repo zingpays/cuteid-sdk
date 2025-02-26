@@ -21,10 +21,10 @@ export const init = async (
     let webBaseUrl: string;
 
     if (env === 'STAG') {
-      webBaseUrl = 'https://sandbox-web.cuteid.ai/';
+      webBaseUrl = 'https://sandbox-web.cuteid.ai';
       apiBaseUrl = 'https://sandbox-api.cuteid.ai';
     } else if (env === 'PROD') {
-      webBaseUrl = 'https://web.cuteid.ai/';
+      webBaseUrl = 'https://web.cuteid.ai';
       apiBaseUrl = 'https://api.cuteid.ai';
     } else {
       reject(new Error("环境参数错误：env 允许的值为 'STAG' 或 'PROD'"));
