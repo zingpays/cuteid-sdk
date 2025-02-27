@@ -1,10 +1,25 @@
 {
-  "name": "@zingpays/cuteid-sdk",
-  "version": "0.1.2",
-  "main": "index.ts",
+  "name": "@cuteid/sdk",
+  "version": "0.1.0",
+  "description": "A lightweight SDK to initialize application and handle callback redirection",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "prepublishOnly": "npm run build"
+  },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com",
     "access": "public"
   },
-  "dependencies": {}
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zingpays/cuteid-sdk.git"
+  },
+  "keywords": [
+    "sdk",
+    "cuteid"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^5.7.3"
+  }
 }
