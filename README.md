@@ -1,6 +1,6 @@
 # SDK TypeScript 文档
 
-本文档介绍了 `@cuteid/sdk` 的使用方法和实现细节。该 SDK 主要用于初始化应用，在 API 请求成功后，根据不同的环境自动跳转到对应的页面。
+本文档介绍了 `@cuteid.ai/sdk` 的使用方法和实现细节。该 SDK 主要用于初始化应用，在 API 请求成功后，根据不同的环境自动跳转到对应的页面。
 
 ---
 
@@ -18,7 +18,7 @@ SDK 提供了一个 `init` 方法，该方法接受三个参数：
 
 # 安装指南
 
-本文档介绍如何安装 `@cuteid/sdk`，该包托管在 GitHub Packages 上，即使是公开包也需要进行认证配置。
+本文档介绍如何安装 `@cuteid.ai/sdk`，该包托管在 GitHub Packages 上，即使是公开包也需要进行认证配置。
 
 ## 安装步骤
 
@@ -26,14 +26,14 @@ SDK 提供了一个 `init` 方法，该方法接受三个参数：
 
 在终端中运行以下命令：
 ```bash
-npm install @cuteid/sdk
+npm install @cuteid.ai/sdk
 ```
 
 ### 使用 yarn 安装
 
 在终端中运行以下命令：
 ```bash
-yarn add @cuteid/sdk
+yarn add @cuteid.ai/sdk
 ```
 
 # 使用方法
@@ -43,7 +43,7 @@ yarn add @cuteid/sdk
 在你的项目文件中导入 SDK 的 `init` 方法。例如：
 
 ```typescript
-import { init } from '@cuteid/sdk';
+import { init } from '@cuteid.ai/sdk';
 ```
 
 ## 2. 调用 init 方法
