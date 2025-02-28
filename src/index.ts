@@ -89,3 +89,10 @@ export const jump = (): void => {
   }
   window.location.href = `${storedWebBaseUrl}/?${storedQueryStr}`;
 };
+
+const cuteid = {
+  init,
+  jump
+};
+
+export default cuteid;
