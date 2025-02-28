@@ -5,6 +5,14 @@
  */
 export interface Config {
   /**
+   * - 应用 ID（必传）
+   */
+  appUuid: string;
+  /**
+   * API Base URL
+   */
+  apiBaseUrl: string;
+  /**
    * 请求成功后跳转的回调 URL（可选）
    */
   callbackUrl?: string;
@@ -24,45 +32,38 @@ let storedQueryStr: string | null = null;
 let storedWebBaseUrl: string | null = null;
 
 /**
- * 存储根据环境确定的 API Base URL，用于请求时使用
- */
-let apiBaseUrl: string | null = null;
-
-/**
  * 初始化 SDK
  *
- * @param app_uuid - 应用 ID（必传）
- * @param config - 配置对象（可选），包含 callbackUrl 和 env
+ * @param config - 配置对象，包含 appUuid、apiBaseUrl、callbackUrl 和 env
  *
- * 如果传入了 callbackUrl，会附加到 API 请求中。env 参数用来确定跳转使用的 Web 地址，
- * 默认为 'PROD'（生产环境），也可以指定为 'STAG'（测试环境）。
+ * - appUuid 和 apiBaseUrl 为必传参数。
+ * - 如果传入了 callbackUrl，会附加到 API 请求中。
+ * - env 参数用来确定跳转使用的 Web 地址，默认为 'PROD'（生产环境），也可以指定为 'STAG'（测试环境）。
  *
  * 请求成功后，内部会保存返回的 query 字符串，用于后续调用 jump() 方法进行跳转。
  */
 export const init = async (
-  app_uuid: string,
-  config?: Config
+  config: Config
 ): Promise<void> => {
-  if (!app_uuid) {
-    throw new Error('参数错误：app_uuid 为必传参数');
+  const { appUuid, apiBaseUrl, callbackUrl = '', env = 'PROD' } = config;
+  if (!appUuid) {
+    throw new Error('参数错误：appUuid 为必传参数');
   }
 
-  // 提取配置参数，设置默认值：默认环境为 'PROD'
-  const callbackUrl = config?.callbackUrl || '';
-  const env: 'STAG' | 'PROD' = config?.env || 'PROD';
+  if (!apiBaseUrl) {
+    throw new Error('参数错误：apiBaseUrl 为必传参数');
+  }
 
   if (env === 'STAG') {
     storedWebBaseUrl = 'https://sandbox-web.cuteid.ai';
-    apiBaseUrl = 'https://sandbox-api.cuteid.ai';
   } else if (env === 'PROD') {
     storedWebBaseUrl = 'https://web.cuteid.ai';
-    apiBaseUrl = 'https://api.cuteid.ai';
   } else {
     new Error("环境参数错误：env 允许的值为 'STAG' 或 'PROD'");
   }
   
   // 构造请求 URL，callbackUrl 为可选参数
-  const url = `${apiBaseUrl}/api/partner/simulate-partner-request?app_uuid=${app_uuid}${
+  const url = `${apiBaseUrl}/api/partner/simulate-partner-request?app_uuid=${appUuid}${
     callbackUrl ? `&callback_url=${encodeURIComponent(callbackUrl)}` : ''
   }`;
 
